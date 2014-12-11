@@ -18,15 +18,15 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author T107
  */
-public class DAOpantalones {
-    public String buscar() throws Exception {
+public class DAOtipo {
+    public String tipo() throws Exception {
         SessionFactory factory= HibernateUtilidades.getSessionFactory();
         Session session=factory.openSession();
         Transaction transaction=session.beginTransaction();
-        Criteria crit=session.createCriteria(Pantalones.class);//.add(Restrictions.idEq(this));
-        Pantalones mapeo=(Pantalones)crit.uniqueResult();
+        Criteria crit=session.createCriteria(Tipo.class);//.add(Restrictions.idEq(this));
+        Tipo mapeo=(Tipo)crit.uniqueResult();
         ObjectMapper mapper=new ObjectMapper();
-        Map<String,Pantalones> singletonMap = Collections.singletonMap("pantalones", mapeo);
+        Map<String,Tipo> singletonMap = Collections.singletonMap("tipo", mapeo);
         transaction.commit();
         session.close(); 
         System.out.println(mapper.writeValueAsString(singletonMap)); 
